@@ -1,0 +1,31 @@
+# Project 3 — Grade Calculator
+# Author: Gemini
+
+scores = []
+
+# Collect 5 scores from the user
+print("Please enter 5 test scores:")
+for i in range(5):
+    # Get input and convert to float (allowing for decimals)
+    score = float(input(f"Score {i + 1}: "))
+    scores.append(score)
+
+# Calculate the average using sum() and len()
+average = sum(scores) / len(scores)
+
+# Determine the letter grade based on the average
+if average >= 90:
+    grade = 'A'
+elif average >= 80:
+    grade = 'B'
+elif average >= 70:
+    grade = 'C'
+elif average >= 60:
+    grade = 'D'
+else:
+    grade = 'F'
+
+# Print the final result formatted to 1 decimal place
+print("-" * 20)
+print(f"Average: {average:.1f}")
+print(f"Final Grade: {grade}")
