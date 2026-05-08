@@ -1,0 +1,46 @@
+# starter.py — Language Poll Analyser
+# Project 1 | Easy | 20–25 minutes
+#
+# Run from this folder:
+#   python starter.py
+#
+# The CSV file is at: ../../week1/favorites.csv
+
+import csv
+
+# ── Step 1: Read the CSV and count languages ──────────────────────────────────
+counts = {}
+
+# Ensure the path correctly points to your favorites.csv file
+try:
+    with open("../../week1/favorites.csv", "r") as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            # Get the language from the row (case-insensitive)
+            language = row["language"].strip().capitalize()
+
+            # Update counts — increment if exists, create if new
+            if language in counts:
+                counts[language] += 1
+            else:
+                counts[language] = 1
+except FileNotFoundError:
+    print("Error: favorites.csv not found. Check the file path.")
+    exit()
+
+# ── Step 2: Sort by popularity (most popular first) ───────────────────────────
+# sorted() returns a list of keys, ordered by their values in the counts dict
+sorted_languages = sorted(counts, key=counts.get, reverse=True)
+
+# ── Step 3: Print the report ──────────────────────────────────────────────────
+print("\n=== Language Popularity Report ===")
+
+# Loop over sorted_languages with enumerate() to get rank numbers starting at 1
+for rank, language in enumerate(sorted_languages, start=1):
+    count = counts[language]
+    # :<10 provides padding to keep the colon aligned
+    print(f"{rank}. {language:<10} : {count} students")
+
+# Print the total number of responses
+total = sum(counts.values())
+print(f"\nTotal responses: {total}")
