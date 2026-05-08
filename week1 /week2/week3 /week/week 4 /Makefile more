@@ -1,0 +1,19 @@
+# Specify the compiler
+CC = clang
+
+# Specify compiler flags:
+# -Wall: enable all warnings
+# -Wextra: enable even more warnings
+# -std=c11: use the C11 standard
+CFLAGS = -Wall -Wextra -std=c11
+
+# The 'filter' target: 
+# It depends on filter.c, helpers.c, and the header files.
+# -lm links the math library (required for round())
+filter: filter.c helpers.c helpers.h bmp.h
+	$(CC) $(CFLAGS) -o filter filter.c helpers.c -lm
+
+# The 'clean' target:
+# Removes the compiled 'filter' program and any generated .bmp files.
+clean:
+	rm -f filter *.bmp
