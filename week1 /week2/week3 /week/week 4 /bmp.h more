@@ -1,0 +1,65 @@
+// CS50x Week 4 — BMP type definitions (distribution code)
+// DO NOT MODIFY THIS FILE
+
+#include <stdint.h>
+
+/**
+ * Custom data types based on standard C integers.
+ * These match the naming conventions used in Microsoft's BMP documentation.
+ */
+typedef uint8_t  BYTE;
+typedef uint32_t DWORD;
+typedef int32_t  LONG;
+typedef uint16_t WORD;
+
+/**
+ * BITMAPFILEHEADER
+ * ----------------
+ * The first 14 bytes of a BMP file.
+ * Contains general information about the file type and size.
+ */
+typedef struct
+{
+    WORD  bfType;      // File type; must be "BM" (0x4D42)
+    DWORD bfSize;      // The size, in bytes, of the bitmap file
+    WORD  bfReserved1; // Reserved; must be zero
+    WORD  bfReserved2; // Reserved; must be zero
+    DWORD bfOffBits;   // The offset, in bytes, from the beginning to the pixel data
+} __attribute__((__packed__))
+BITMAPFILEHEADER;
+
+/**
+ * BITMAPINFOHEADER
+ * ----------------
+ * The next 40 bytes of the file.
+ * Contains detailed information about the image dimensions and color format.
+ */
+typedef struct
+{
+    DWORD biSize;          // The number of bytes required by the structure
+    LONG  biWidth;         // The width of the bitmap, in pixels
+    LONG  biHeight;        // The height of the bitmap, in pixels
+    WORD  biPlanes;        // The number of planes for the target device (must be 1)
+    WORD  biBitCount;      // The number of bits-per-pixel (e.g., 24 for RGB)
+    DWORD biCompression;   // The type of compression (0 for uncompressed)
+    DWORD biSizeImage;     // The size, in bytes, of the image data
+    LONG  biXPelsPerMeter; // The horizontal resolution (pixels per meter)
+    LONG  biYPelsPerMeter; // The vertical resolution (pixels per meter)
+    DWORD biClrUsed;       // The number of color indexes in the color table
+    DWORD biClrImportant;  // The number of color indexes that are important
+} __attribute__((__packed__))
+BITMAPINFOHEADER;
+
+/**
+ * RGBTRIPLE
+ * ---------
+ * Describes a color consisting of relative intensities of Red, Green, and Blue.
+ * Note: BMP files store these in BGR (Blue, Green, Red) order.
+ */
+typedef struct
+{
+    BYTE rgbtBlue;
+    BYTE rgbtGreen;
+    BYTE rgbtRed;
+} __attribute__((__packed__))
+RGBTRIPLE;
