@@ -1,0 +1,30 @@
+# Project 4 — Word Counter
+# Author: Gemini
+
+sentence = input("Enter a sentence: ")
+words = sentence.lower().split()
+
+# Calculate total word count using len()
+word_count = len(words)
+
+# Calculate character count (excluding spaces)
+# sentence.replace(" ", "") creates a new string with no spaces
+char_count = len(sentence.replace(" ", ""))
+
+# Create a word frequency dictionary
+frequency = {}
+for word in words:
+    # If the word is already in the dictionary, increment its count
+    if word in frequency:
+        frequency[word] += 1
+    # If it's a new word, add it to the dictionary with a value of 1
+    else:
+        frequency[word] = 1
+
+# Print total words, total characters, and word frequency
+print("-" * 20)
+print(f"Total Words: {word_count}")
+print(f"Total Characters (no spaces): {char_count}")
+print("\nWord Frequency:")
+for word, count in frequency.items():
+    print(f"  {word}: {count}")
