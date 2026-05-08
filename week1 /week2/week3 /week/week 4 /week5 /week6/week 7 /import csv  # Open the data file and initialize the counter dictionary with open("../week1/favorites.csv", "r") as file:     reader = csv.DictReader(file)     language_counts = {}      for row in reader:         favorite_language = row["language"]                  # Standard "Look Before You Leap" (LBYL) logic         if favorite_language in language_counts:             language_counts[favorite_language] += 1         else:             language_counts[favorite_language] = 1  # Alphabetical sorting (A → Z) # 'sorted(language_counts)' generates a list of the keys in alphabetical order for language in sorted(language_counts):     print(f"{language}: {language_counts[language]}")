@@ -1,0 +1,20 @@
+import csv
+
+# Open the data file and initialize the counter dictionary
+with open("../week1/favorites.csv", "r") as file:
+    reader = csv.DictReader(file)
+    language_counts = {}
+
+    for row in reader:
+        favorite_language = row["language"]
+        
+        # Standard "Look Before You Leap" (LBYL) logic
+        if favorite_language in language_counts:
+            language_counts[favorite_language] += 1
+        else:
+            language_counts[favorite_language] = 1
+
+# Alphabetical sorting (A → Z)
+# 'sorted(language_counts)' generates a list of the keys in alphabetical order
+for language in sorted(language_counts):
+    print(f"{language}: {language_counts[language]}")
