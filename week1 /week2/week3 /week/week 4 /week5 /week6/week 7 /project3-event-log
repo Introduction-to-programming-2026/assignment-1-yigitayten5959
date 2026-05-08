@@ -1,0 +1,71 @@
+# starter.py — Event Log Reporter
+# Project 3 | Intermediate | 35–45 minutes
+
+import csv
+
+# ── Step 1: Set up data structures ───────────────────────────────────────────
+room_counts   = {}   # room_name  -> number of events
+type_counts   = {}   # event_type -> number of events
+day_attendees = {}   # date       -> total attendees that day
+all_events    = []   # list of row dicts for later filtering
+
+# ── Step 2: Single pass through the CSV ──────────────────────────────────────
+try:
+    with open("bookings.csv", "r") as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            room       = row["room"]
+            event_type = row["event_type"]
+            date       = row["date"]
+            attendees  = int(row["attendees"])
+
+            # Update room_counts
+            room_counts[room] = room_counts.get(room, 0) + 1
+
+            # Update type_counts
+            type_counts[event_type] = type_counts.get(event_type, 0) + 1
+
+            # Update day_attendees (Summing attendees per day)
+            day_attendees[date] = day_attendees.get(date, 0) + attendees
+
+            # Store the original row for later filtering
+            all_events.append(row)
+
+except FileNotFoundError:
+    print("Error: bookings.csv not found.")
+    exit()
+
+# ── Step 3: Find the busiest day ──────────────────────────────────────────────
+# We use the max function with a custom key to find the date with the highest value
+if day_attendees:
+    busiest_day = max(day_attendees, key=day_attendees.get)
+    busiest_count = day_attendees[busiest_day]
+else:
+    busiest_day, busiest_count = "N/A", 0
+
+# ── Step 4: Filter and sort large events ─────────────────────────────────────
+# Use a list comprehension to filter events with more than 50 attendees
+large_events = [row for row in all_events if int(row["attendees"]) > 50]
+
+# Sort large_events by attendees descending using a lambda function
+large_events_sorted = sorted(large_events, key=lambda row: int(row["attendees"]), reverse=True)
+
+# ── Step 5: Print the report ──────────────────────────────────────────────────
+print("=== Community Centre Booking Report ===")
+
+print("\nBookings by Room:")
+for room in sorted(room_counts):
+    print(f"  {room:<10}: {room_counts[room]} events")
+
+print("\nBookings by Event Type:")
+for etype in sorted(type_counts):
+    print(f"  {etype:<12}: {type_counts[etype]} events")
+
+print(f"\nBusiest Day: {busiest_day} ({busiest_count} total attendees)")
+
+print("\nLarge Events (> 50 attendees):")
+if not large_events_sorted:
+    print("  No large events found.")
+else:
+    for event in large_events_sorted:
+        print(f"  {event['date']} | {event['room']:<8} | {event['event_type']:<10} | {event['attendees']} attendees")
