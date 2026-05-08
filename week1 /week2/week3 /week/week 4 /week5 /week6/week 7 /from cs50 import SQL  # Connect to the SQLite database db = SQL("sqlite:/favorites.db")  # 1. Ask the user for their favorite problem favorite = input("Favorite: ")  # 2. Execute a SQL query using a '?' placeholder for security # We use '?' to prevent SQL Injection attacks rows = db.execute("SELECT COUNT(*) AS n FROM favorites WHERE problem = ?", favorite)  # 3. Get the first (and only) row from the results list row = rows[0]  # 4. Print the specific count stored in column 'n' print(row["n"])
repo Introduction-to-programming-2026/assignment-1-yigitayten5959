@@ -1,0 +1,17 @@
+from cs50 import SQL
+
+# Connect to the SQLite database
+db = SQL("sqlite:///favorites.db")
+
+# 1. Ask the user for their favorite problem
+favorite = input("Favorite: ")
+
+# 2. Execute a SQL query using a '?' placeholder for security
+# We use '?' to prevent SQL Injection attacks
+rows = db.execute("SELECT COUNT(*) AS n FROM favorites WHERE problem = ?", favorite)
+
+# 3. Get the first (and only) row from the results list
+row = rows[0]
+
+# 4. Print the specific count stored in column 'n'
+print(row["n"])
