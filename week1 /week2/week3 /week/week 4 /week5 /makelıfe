@@ -1,0 +1,18 @@
+# Specify the compiler to use
+CC = clang
+
+# Specify compiler flags:
+# -Wall: enables all common warnings
+# -Wextra: enables extra warnings for better code quality
+# -std=c11: uses the 2011 C standard
+CFLAGS = -Wall -Wextra -std=c11
+
+# Target 'inheritance':
+# This tells 'make' to build the executable from inheritance.c
+inheritance: inheritance.c
+	$(CC) $(CFLAGS) -o inheritance inheritance.c
+
+# Target 'clean':
+# Removes the compiled executable to allow for a fresh start
+clean:
+	rm -f inheritance
