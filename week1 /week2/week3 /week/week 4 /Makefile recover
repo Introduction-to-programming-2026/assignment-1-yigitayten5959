@@ -1,0 +1,19 @@
+# Define the compiler to use
+CC = clang
+
+# Define compiler flags:
+# -Wall: enables all common compiler warnings
+# -Wextra: enables extra warnings for even cleaner code
+# -std=c11: uses the 2011 C programming standard
+CFLAGS = -Wall -Wextra -std=c11
+
+# The 'recover' target:
+# Tells make how to build the 'recover' executable from 'recover.c'
+recover: recover.c
+	$(CC) $(CFLAGS) -o recover recover.c
+
+# The 'clean' target:
+# A utility command to delete the compiled program and any 
+# JPEG files found in the directory, allowing for a fresh start.
+clean:
+	rm -f recover *.jpg
