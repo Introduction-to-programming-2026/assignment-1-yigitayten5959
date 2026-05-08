@@ -1,0 +1,19 @@
+# Compiled Binaries
+# These are the executable files created after compiling your code. 
+# You don't want to track these because they can be rebuilt from source.
+lab5/inheritance/inheritance
+pset5/speller/speller
+
+# CS50 Specific Files
+# Configuration files used by the CS50 submission system.
+.cs50.yml
+
+# macOS System Files
+# Files automatically created by the macOS Finder; unnecessary for the project.
+.DS_Store
+
+# Editor and IDE Files
+# Temporary files and configuration folders created by text editors like VS Code or Vim.
+*.swp
+*.swo
+.vscode/
