@@ -1,0 +1,18 @@
+# Specify the compiler
+CC = clang
+
+# Specify compiler flags:
+# -Wall: enables all common warnings
+# -Wextra: enables extra warnings for cleaner code
+# -std=c11: uses the 2011 C standard
+CFLAGS = -Wall -Wextra -std=c11
+
+# The 'speller' target:
+# Tells 'make' to compile speller.c and dictionary.c into one executable
+speller: speller.c dictionary.c dictionary.h
+	$(CC) $(CFLAGS) -o speller speller.c dictionary.c
+
+# The 'clean' target:
+# A utility to delete the compiled 'speller' program and start fresh
+clean:
+	rm -f speller
