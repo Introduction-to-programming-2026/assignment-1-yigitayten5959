@@ -1,0 +1,35 @@
+// CS50x Week 4 — Filter (More): helpers.h
+// DO NOT MODIFY THIS FILE
+
+#include "bmp.h"
+
+/**
+ * grayscale
+ * ---------
+ * Converts the image to grayscale by averaging the Red, Green, and Blue 
+ * components of each pixel.
+ */
+void grayscale(int height, int width, RGBTRIPLE image[height][width]);
+
+/**
+ * reflect
+ * -------
+ * Flips the image horizontally, creating a mirror effect.
+ */
+void reflect(int height, int width, RGBTRIPLE image[height][width]);
+
+/**
+ * blur
+ * ----
+ * Applies a box blur by averaging the color values of each pixel and 
+ * its 3x3 neighborhood.
+ */
+void blur(int height, int width, RGBTRIPLE image[height][width]);
+
+/**
+ * edges
+ * -----
+ * Detects edges within the image using the Sobel operator to compute 
+ * gradients in the horizontal and vertical directions.
+ */
+void edges(int height, int width, RGBTRIPLE image[height][width]); 
