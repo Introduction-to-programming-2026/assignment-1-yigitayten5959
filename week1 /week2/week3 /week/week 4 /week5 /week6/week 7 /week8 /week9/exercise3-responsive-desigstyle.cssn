@@ -1,0 +1,107 @@
+/* Exercise 3: Responsive Design
+  ==============================
+  MOBILE-FIRST: Write base styles for small screens,
+  then use min-width media queries to enhance for larger screens.
+*/
+
+/* ===== TODO: CSS Custom Properties ===== */
+:root {
+  --primary-blue: #1a3a5c;
+  --accent-gold: #e8a838;
+  --bg-light: #f4f7f6;
+  --white: #ffffff;
+  --text-main: #333333;
+  --spacing-unit: 20px;
+}
+
+/* ===== TODO: Base Styles (Mobile First) ===== */
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* ===== TODO Task 2: Header & Nav (mobile: stacked) ===== */
+header {
+  background-color: var(--primary-blue);
+  color: var(--white);
+  padding: 1.5rem 1rem;
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: column; /* Stack logo and nav vertically on mobile */
+  align-items: center;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column; /* Links stacked in a column for easy tapping */
+  width: 100%;
+  text-align: center;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  padding: 12px; /* Minimum 44px tap target height for accessibility */
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* ===== TODO Task 5: Hero Section ===== */
+#hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background-color: var(--white);
+}
+
+#hero h1 {
+  /* Fluid typography: Min 1.8rem, scales with width, Max 3.5rem */
+  font-size: clamp(1.8rem, 6vw, 3.5rem);
+  color: var(--primary-blue);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+/* ===== TODO Task 3: Flexbox Cards ===== */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to wrap to the next row */
+  gap: var(--spacing-unit);
+  margin-top: 2rem;
+}
+
+.flex-card {
+  /* Grow, shrink, and base width of 250px */
+  flex: 1 1 250px; 
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* ===== TODO Task 4: CSS Grid Gallery ===== */
+.photo-grid {
+  display:
