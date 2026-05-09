@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A professional personal profile page.">
+    <title>My Professional Profile | Exercise 1</title>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to My Profile</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills & Education</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I am a student developer currently mastering the foundations of the web. I believe that <strong>clean code</strong> and <strong>semantic structure</strong> are the keys to a great user experience.</p>
+            
+            <figure>
+                <img src="https://via.placeholder.com/150" alt="A professional headshot of the profile owner" width="150">
+                <figcaption>A recent photo from a local tech meetup.</figcaption>
+            </figure>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <p>I have been focusing on the following core technologies:</p>
