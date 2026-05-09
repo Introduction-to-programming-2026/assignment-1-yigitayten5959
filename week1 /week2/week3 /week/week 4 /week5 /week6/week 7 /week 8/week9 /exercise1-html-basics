@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal profile page and portfolio">
+    <title>My Personal Profile | Exercise 1</title>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to My Profile</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills & Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I am a passionate learner currently exploring the world of <strong>Web Development</strong>. I enjoy solving puzzles and building things that live on the internet.</p>
+            
+            <figure>
+                <img src="https://via.placeholder.com/150" alt="A professional portrait of me smiling" width="150">
+                <figcaption>Me at the 2024 Tech Conference.</figcaption>
+            </figure>
+        </section>
+
+        <section id="skills">
+            <h2>My Skills & Education</h2>
+            <p>Below is a summary of the technologies I am currently mastering:</p>
+            
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Level</th>
+                        <th>Years Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HTML5</td>
+                        <td>Intermediate</td>
+                        <td>1 Year</td>
+                    </tr>
+                    <tr>
+                        <td>CSS3</td>
+                        <td>Beginner</td>
+                        <td>0.5 Years</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Core Competencies</h3>
+            <ul>
+                <li>Semantic HTML Markup</li>
+                <li>Basic CSS Layouts (Flexbox)</li>
+                <li>Version Control with Git</li>
+            </ul>
+        </section>
+
+        <section id="media">
+            <h2>Video Introduction</h2>
+            <p>Check out my favorite coding tutorial below:</p>
+            <iframe 
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                title="Introduction Video" 
+                frameborder="0" 
+                allowfullscreen>
+            </iframe>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Profile Page. Built with accessibility in mind.</p>
+    </footer>
+
+</body>
+</html>
