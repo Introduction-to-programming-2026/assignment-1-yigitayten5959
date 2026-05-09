@@ -1,0 +1,161 @@
+/* --- Global Styles & Reset --- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    color: #333;
+    background-color: #f4f7f6;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: #1a3a5c;
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column; /* Stack logo and nav on mobile */
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.9rem;
+}
+
+nav a:hover {
+    color: #e8a838;
+}
+
+/* --- Hero Section --- */
+#hero {
+    background: linear-gradient(rgba(26, 58, 92, 0.8), rgba(26, 58, 92, 0.8)), 
+                url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1352&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+/* --- Section Spacing --- */
+section {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* --- Flexbox Demo --- */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to drop to next line */
+    gap: 20px;
+}
+
+.flex-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border-top: 5px solid #1a3a5c;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* Mobile: 1 card per row */
+    flex: 1 1 100%; 
+}
+
+/* --- CSS Grid Demo --- */
+.photo-grid {
+    display: grid;
+    /* Mobile: 1 column */
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.grid-item:hover img {
+    transform: scale(1.05);
+}
+
+.caption {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #ddd;
+    margin-top: 60px;
+}
+
+/* =============================================
+   MEDIA QUERIES (The magic of responsiveness)
+   ============================================= */
+
+/* Tablet View (600px and up) */
+@media (min-width: 600px) {
+    .header-inner {
+        flex-direction: row; /* Logo and nav side-by-side */
+        justify-content: space-between;
+    }
+
+    .flex-card {
+        flex: 1 1 calc(50% - 20px); /* 2 cards per row */
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 column grid */
+    }
+
+    .featured {
+        grid-column: span 2; /* Featured image spans both columns */
+    }
+}
+
+/* Desktop View (900px and up) */
+@media (min-width: 900px) {
+    .flex-card {
+        flex: 1 1 calc(33.333% - 20px); /* 3 cards per row */
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 column grid */
+    }
+}
