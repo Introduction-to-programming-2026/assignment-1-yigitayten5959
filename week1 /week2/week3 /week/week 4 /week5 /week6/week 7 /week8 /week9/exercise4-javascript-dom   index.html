@@ -1,0 +1,103 @@
+/**
+ * Exercise 4: JavaScript & the DOM
+ * ================================
+ * Logic for interacting with the HTML elements defined in index.html
+ */
+
+// --- TASK 1: Console Warmup ---
+console.log("Task 1: Warmup loaded!");
+const targetBox = document.getElementById('target-box');
+// Change background and text color via JS
+targetBox.style.backgroundColor = "#6c5ce7";
+targetBox.style.color = "white";
+
+
+// --- TASK 2: Click Counter ---
+let count = 0;
+const countDisplay = document.getElementById('count-display');
+const btnDecrement = document.getElementById('btn-decrement');
+const btnReset = document.getElementById('btn-reset');
+const btnIncrement = document.getElementById('btn-increment');
+
+const updateDisplay = () => {
+    countDisplay.textContent = count;
+    // Simple visual feedback: red for negative, green for positive
+    countDisplay.style.color = count < 0 ? "#e74c3c" : count > 0 ? "#27ae60" : "#333";
+};
+
+btnIncrement.addEventListener('click', () => {
+    count++;
+    updateDisplay();
+});
+
+btnDecrement.addEventListener('click', () => {
+    count--;
+    updateDisplay();
+});
+
+btnReset.addEventListener('click', () => {
+    count = 0;
+    updateDisplay();
+});
+
+
+// --- TASK 3: Dynamic List Builder ---
+const listInput = document.getElementById('list-input');
+const btnAddItem = document.getElementById('btn-add-item');
+const dynamicList = document.getElementById('dynamic-list');
+
+const addItem = () => {
+    const text = listInput.value.trim();
+    if (text === "") return; // Don't add empty items
+
+    // Create <li>
+    const li = document.createElement('li');
+    li.textContent = text + " ";
+
+    // Create Delete Button
+    const delBtn = document.createElement('button');
+    delBtn.innerHTML = "&times;";
+    delBtn.className = "delete-btn";
+    delBtn.onclick = () => li.remove();
+
+    li.appendChild(delBtn);
+    dynamicList.appendChild(li);
+
+    // Clear input and focus
+    listInput.value = "";
+    listInput.focus();
+};
+
+btnAddItem.addEventListener('click', addItem);
+// Allow "Enter" key to add items
+listInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') addItem();
+});
+
+
+// --- TASK 4: Show / Hide Toggle ---
+const btnToggle = document.getElementById('btn-toggle');
+const detailsDiv = document.querySelector('.details');
+
+btnToggle.addEventListener('click', () => {
+    const isHidden = detailsDiv.classList.toggle('hidden');
+    btnToggle.textContent = isHidden ? "Show Details" : "Hide Details";
+});
+
+
+// --- TASK 5: RGB Color Mixer ---
+const sliders = document.querySelectorAll('.slider');
+const preview = document.getElementById('color-preview');
+const hexDisplay = document.getElementById('hex-display');
+
+const updateColor = () => {
+    const r = document.getElementById('slider-r').value;
+    const g = document.getElementById('slider-g').value;
+    const b = document.getElementById('slider-b').value;
+
+    // Update value labels
+    document.getElementById('val-r').textContent = r;
+    document.getElementById('val-g').textContent = g;
+    document.getElementById('val-b').textContent = b;
+
+    const rgbColor
